@@ -1,0 +1,20 @@
+version: '3.7'
+
+services:
+  postgres:
+    image: postgres:14.1
+    container_name: eetk_database
+    restart: always
+    environment:
+      POSTGRES_DB: eetk_db
+      POSTGRES_USER: eetk_user
+      POSTGRES_PASSWORD: eetk_password
+
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
+    name: postgres_data
