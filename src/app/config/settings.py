@@ -8,7 +8,7 @@ load_dotenv()
 
 @dataclass
 class PostgresDatabaseSettings:
-    DATABASE_NAME: str = os.environ.get("POSTGRES_NAME")
+    DATABASE_NAME: str = os.environ.get("POSTGRES_DB")
     HOST: str = os.environ.get("POSTGRES_HOST")
     PORT: str = os.environ.get("POSTGRES_PORT")
     USER: str = os.environ.get("POSTGRES_USER")

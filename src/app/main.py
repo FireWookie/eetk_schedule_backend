@@ -6,9 +6,11 @@ from fastapi import FastAPI
 from starlette.middleware.cors import CORSMiddleware
 from starlette.requests import Request
 
+from src.app.routing.routers import apiv1
+
 
 def create_app() -> FastAPI:
-    apiv1 = FastAPI(
+    api = FastAPI(
         docs_url="/docs",
         debug=True,
         title="ЕЭТК API мобильного приложения",
@@ -16,16 +18,16 @@ def create_app() -> FastAPI:
 
     origins = ["*"]
 
-    apiv1.add_middleware(
+    api.add_middleware(
         CORSMiddleware,
         allow_origins=origins,
         allow_credentials=["*"],
         allow_methods=["GET", "POST", "PUT", "DELETE"],
         allow_headers=["*"],  # need to set used headers
     )
-    # apiv1.include_router(prefix="/auth", router=auth.router)
+    api.include_router(apiv1)
 
-    return apiv1
+    return api
 
 
 app = create_app()

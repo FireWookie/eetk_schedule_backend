@@ -41,3 +41,9 @@ class Repository(AbstractRepository):
             stmt = delete(self.model).where(self.model.id == item_id)
             await session.execute(stmt)
             await session.commit()
+
+    async def delete_all(self) -> None:
+        async with async_session_maker() as session:
+            stmt = delete(self.model)
+            await session.execute(stmt)
+            await session.commit()

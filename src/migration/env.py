@@ -8,6 +8,7 @@ from alembic import context
 from src.app.db.db import Base
 from src.app.db.models.schedule import ScheduleModel
 from src.app.db.models.schedule_change import ScheduleChangedModel
+from src.app.db.models.college import CollegeModel
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
